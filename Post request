@@ -1,0 +1,34 @@
+const express = require("express"); // we are importing the express services in our server
+
+const app = express(); //we are making an app which contains facilities of express
+const port = 3001; // we are making our own local port
+const exp= require("./linktoserver1") // we require file which contains data from other ffile
+app.use(express.json()) //to convert the code to json
+
+app.post("/register", (req, res) => {
+
+    //this is post rquest
+    console.log(req.body);
+    let username= req.body.username;
+    let password= req.body.password;
+    console.log(username, password,'is your username and password');
+
+    res.json({message:"Your request is sucessfull!"})
+})
+
+    //below is for get req
+//   res.json({
+//     message: "get request running for our server",
+//     login: true,
+//     data:exp,
+//   });
+// }); // we can also send the same in above way
+
+// res.status(201).json({exp:exp})})
+// other way to do it is below
+
+//res.send("server running")}) // it is only showing server running with no customized data
+
+app.listen(port, () => {
+  console.log("Server has been started on port 3000");
+});
